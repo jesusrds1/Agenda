@@ -11,6 +11,8 @@ if($db==false){
 $contactos = listarContactos($db);
 mostrarContactos($contactos);
 
+echo "<a href='agregar_contacto.php'>Agregar contacto</a>";
+
 if(!desconectar($db)){
     echo "Hubo problemas desconectando";
 }
