@@ -9,7 +9,9 @@ if($db==false){
 }
 
 $contactos = listarContactos($db);
+pintarCabeceira();
 mostrarContactos($contactos);
+pintarPe();
 
 if(!desconectar($db)){
     echo "Hubo problemas desconectando";
