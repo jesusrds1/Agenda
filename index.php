@@ -13,6 +13,8 @@ pintarCabeceira();
 mostrarContactos($contactos);
 pintarPe();
 
+echo "<a href='agregar_contacto.php'>Agregar contacto</a>";
+
 if(!desconectar($db)){
     echo "Hubo problemas desconectando";
 }

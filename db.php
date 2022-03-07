@@ -38,4 +38,16 @@ function listarContactos($conexionBD){
     return mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
 
+function insertarContacto($conexionBD,$nombre,$apellidos,$tel_fijo,$correo){
+    $sentenzaSQL = "INSERT INTO contacto (nombre, apellidos, tel_fijo, correo) VALUES ('$nombre', '$apellidos', '$tel_fijo', '$correo');";
+    $result = mysqli_query($conexionBD, $sentenzaSQL);
+
+    if (!$result) {
+        echo('Error en la consulta a la base de datos: ' . mysqli_error($conexionBD));
+        return false;
+    }
+
+    return true;
+}
+
 ?>

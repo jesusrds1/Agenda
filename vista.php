@@ -47,4 +47,24 @@ function mostrarContactos($contactos){
     echo "</table>";
 }
 
+
+function pintarFormulario($action,$method,$nombre,$apellidos,$tel_fijo,$correo){
+    ?>
+
+    <form action = "<?php echo $action;?>" method="<?php echo $method?>">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="<?php echo $nombre?>" required><br>
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" name="apellidos" value="<?php echo $apellidos?>" required><br>
+        <label for="tel_fijo">Teléfono fijo:</label>
+        <input type="text" name="tel_fijo" value="<?php echo $tel_fijo?>" required><br>
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" value="<?php echo $correo?>" required><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <?php
+}
+
 ?>
