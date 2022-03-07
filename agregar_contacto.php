@@ -3,7 +3,7 @@
 include_once('db.php');
 include_once('vista.php');
 
-function validarFormulario($n,$a, $t, $c){
+function validarFormulario($n,$a, $t, $c){ //se queremos engadir por exemplo un movil añadiriamos un $m no validarformulario e validaremos con 2 if 
     $errs = array();
     if($n == ""){
         array_push($errs, "El nombre no puede quedar vacío");
@@ -42,8 +42,9 @@ $nombre = isset($_POST['nombre'])?$_POST['nombre']:"";
 $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']:"";
 $tel_fijo = isset($_POST['tel_fijo'])?$_POST['tel_fijo']:"";
 $correo = isset($_POST['correo'])?$_POST['correo']:"";
+// recoller o dato do movil por exemplo
 
-$erroresValidacion = validarFormulario($nombre,$apellidos,$tel_fijo,$correo);
+$erroresValidacion = validarFormulario($nombre,$apellidos,$tel_fijo,$correo); //añadir movil
 if(count($erroresValidacion)>0){
     pintarFormulario($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo);
     foreach ($erroresValidacion as $error) {

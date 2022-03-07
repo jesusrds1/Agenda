@@ -11,9 +11,10 @@ if($db==false){
 $contactos = listarContactos($db);
 pintarCabeceira();
 mostrarContactos($contactos);
+echo "<a href='agregar_contacto.php'>Agregar contacto</a>";
 pintarPe();
 
-echo "<a href='agregar_contacto.php'>Agregar contacto</a>";
+
 
 if(!desconectar($db)){
     echo "Hubo problemas desconectando";
