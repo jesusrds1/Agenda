@@ -1,7 +1,9 @@
 <?php
-
+include_once('control_acceso.php');
 include_once('db.php');
 include_once('vista.php');
+
+comprobarSesionUsuario();
 
 $db = conectar();
 if($db==false){
@@ -11,7 +13,8 @@ if($db==false){
 $contactos = listarContactos($db);
 mostrarContactos($contactos);
 
-echo "<a href='agregar_contacto.php'>Agregar contacto</a>";
+echo "<p><a href='agregar_contacto.php'>Agregar contacto</a></p>";
+echo "<p><a href='logout.php'>Salir</a></p>";
 
 if(!desconectar($db)){
     echo "Hubo problemas desconectando";

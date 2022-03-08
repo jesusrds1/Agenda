@@ -50,4 +50,20 @@ function insertarContacto($conexionBD,$nombre,$apellidos,$tel_fijo,$correo){
     return true;
 }
 
+function esUsuarioValido($conexionBD,$usuario, $password){
+    $sentenzaSQL = "select usuario,password from usuario where usuario='$usuario' and password='$password';";
+    $result = mysqli_query($conexionBD, $sentenzaSQL);
+
+    if (!$result) {
+        echo('Error en la consulta a la base de datos: ' . mysqli_error($conexionBD));
+        return false;
+    }
+
+    if(count(mysqli_fetch_all($result))>0){
+        return true;
+    }
+
+    return false;
+}
+
 ?>
