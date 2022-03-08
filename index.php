@@ -11,7 +11,9 @@ if($db==false){
 }
 
 $contactos = listarContactos($db);
+pintarCabeceira();
 mostrarContactos($contactos);
+pintarPe();
 
 echo "<p><a href='agregar_contacto.php'>Agregar contacto</a></p>";
 echo "<p><a href='logout.php'>Salir</a></p>";
