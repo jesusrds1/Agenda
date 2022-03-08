@@ -15,15 +15,17 @@ $password = isset($_POST['password'])?$_POST['password']:"";
 $erroresValidacion = validarFormularioLogin($usuario,$password);
 
 if(count($erroresValidacion)>0){
+    pintarCabeceira();
     pintarFormularioLogin($_SERVER['PHP_SELF'],"POST",$usuario);
     foreach ($erroresValidacion as $error) {
         echo "<p>* $error </p>";
     }
+    pintarPe();
 }else if(!esUsuarioValido($db,$usuario, md5($password))){
+    pintarCabeceira();
     pintarFormularioLogin($_SERVER['PHP_SELF'],"POST",$usuario);
     echo "<p> * El usuario o password facilitados no son válidos </p>";
-    echo md5($password);
-
+    pintarPe();
 }else{
     iniciarSesionUsuario($usuario);
     $host  = $_SERVER['HTTP_HOST'];

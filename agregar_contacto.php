@@ -17,10 +17,12 @@ $correo = isset($_POST['correo'])?$_POST['correo']:"";
 
 $erroresValidacion = validarFormularioContacto($nombre,$apellidos,$tel_fijo,$correo);
 if(count($erroresValidacion)>0){
+    pintarCabeceira();
     pintarFormularioContacto($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo);
     foreach ($erroresValidacion as $error) {
         echo "<p>* $error </p>";
     }
+    pintarPe();
 }else{
     $resultado = insertarContacto($db,$nombre,$apellidos,$tel_fijo,$correo);
     if($resultado){
