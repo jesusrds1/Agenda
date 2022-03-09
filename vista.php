@@ -48,7 +48,7 @@ function mostrarContactos($contactos){
 }
 
 
-function pintarFormulario($action,$method,$nombre,$apellidos,$tel_fijo,$correo,$persona){ //añadir $movil por o exemplo de añadir un campo novo no examen
+function pintarFormularioContacto($action,$method,$nombre,$apellidos,$tel_fijo,$correo){
     ?>
 
     <form action = "<?php echo $action;?>" method="<?php echo $method?>">
@@ -60,9 +60,22 @@ function pintarFormulario($action,$method,$nombre,$apellidos,$tel_fijo,$correo,$
         <input type="text" name="tel_fijo" value="<?php echo $tel_fijo?>" required><br>
         <label for="correo">Correo:</label>
         <input type="email" name="correo" value="<?php echo $correo?>" required><br>
-        <label for="persona">Persona:</label>
-        <input type="text" name="persona" value="<?php echo $persona?>" required><br>
-        
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <?php
+}
+
+function pintarFormularioLogin($action,$method,$usuario){
+    ?>
+
+    <form action = "<?php echo $action;?>" method="<?php echo $method?>">
+        <label for="usuario">Usuario:</label>
+        <input type="text" name="usuario" value="<?php echo $usuario?>" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>        
+
         <input type="submit" value="Enviar">
     </form>
 
