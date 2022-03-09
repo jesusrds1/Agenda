@@ -3,7 +3,7 @@
 include_once('db.php');
 include_once('vista.php');
 
-function validarFormulario($n,$a, $t, $c){ //se queremos engadir por exemplo un movil añadiriamos un $m no validarformulario e validaremos con 2 if 
+function validarFormulario($n,$a, $t, $c,$p){ //se queremos engadir por exemplo un movil añadiriamos un $m no validarformulario e validaremos con 2 if 
     $errs = array();
     if($n == ""){
         array_push($errs, "El nombre no puede quedar vacío");
@@ -29,7 +29,13 @@ function validarFormulario($n,$a, $t, $c){ //se queremos engadir por exemplo un 
     if(!filter_var($c,FILTER_VALIDATE_EMAIL)){
         array_push($errs, "El formato de teléfono no es válido");
     }
+    if(strlen($p)<3){
+        array_push($errs, "El campo persona tiene que tener al menos 4 caracteres");
+    }
+    if($p == ""){
+        array_push($errs, "por favor,añade una persona");
     return $errs;
+    }
 }
 
 $db = conectar();
@@ -42,16 +48,17 @@ $nombre = isset($_POST['nombre'])?$_POST['nombre']:"";
 $apellidos = isset($_POST['apellidos'])?$_POST['apellidos']:"";
 $tel_fijo = isset($_POST['tel_fijo'])?$_POST['tel_fijo']:"";
 $correo = isset($_POST['correo'])?$_POST['correo']:"";
+$persona = isset($_POST['persona'])?$_POST['persona']:"";
 // recoller o dato do movil por exemplo
 
-$erroresValidacion = validarFormulario($nombre,$apellidos,$tel_fijo,$correo); //añadir movil
+$erroresValidacion = validarFormulario($nombre,$apellidos,$tel_fijo,$correo,$persona); //añadir movil
 if(count($erroresValidacion)>0){
-    pintarFormulario($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo);
+    pintarFormulario($_SERVER['PHP_SELF'],"POST",$nombre,$apellidos,$tel_fijo,$correo,$persona);
     foreach ($erroresValidacion as $error) {
         echo "<p>* $error </p>";
     }
 }else{
-    $resultado = insertarContacto($db,$nombre,$apellidos,$tel_fijo,$correo);
+    $resultado = insertarContacto($db,$nombre,$apellidos,$tel_fijo,$correo,$persona);
     if($resultado){
         if(!desconectar($db)){
             echo "Hubo problemas desconectando";
