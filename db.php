@@ -35,11 +35,11 @@ function listarContactos($conexionBD){
         return false;
     }
 
-    return mysqli_fetch_all($result,MYSQLI_ASSOC); //Devolve todos os datos da bd
+    return mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
 
-function insertarContacto($conexionBD,$nombre,$apellidos,$tel_fijo,$correo,$persona){ //añadir o $movil doexemplo de clase
-    $sentenzaSQL = "INSERT INTO contacto (nombre, apellidos, tel_fijo, correo, persona) VALUES ('$nombre', '$apellidos', '$tel_fijo', '$correo','$persona');"; //añadir $movil tamen
+function insertarContacto($conexionBD,$nombre,$apellidos,$tel_fijo,$correo,$telefono){
+    $sentenzaSQL = "INSERT INTO contacto (nombre, apellidos, tel_fijo, correo, telefono) VALUES ('$nombre', '$apellidos', '$tel_fijo', '$correo','$telefono');";
     $result = mysqli_query($conexionBD, $sentenzaSQL);
 
     if (!$result) {

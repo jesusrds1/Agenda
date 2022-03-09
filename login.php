@@ -8,7 +8,6 @@ if($db==false){
     echo "Hubo problemas conectando";
 }
 
-
 $usuario = isset($_POST['usuario'])?$_POST['usuario']:"";
 $password = isset($_POST['password'])?$_POST['password']:"";
 
